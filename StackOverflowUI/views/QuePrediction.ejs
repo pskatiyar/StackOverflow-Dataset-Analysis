@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+<title>Registration form Float Label - Bootsnipp.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<style type="text/css">
+body {
+	/* Safari 4-5, Chrome 1-9 */
+	background: -webkit-gradient(radial, center center, 0, center center, 460, from(#1a82f7
+		), to(#2F2727));
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-radial-gradient(circle, #1a82f7, #2F2727);
+	/* Firefox 3.6+ */
+	background: -moz-radial-gradient(circle, #1a82f7, #2F2727);
+	/* IE 10 */
+	background: -ms-radial-gradient(circle, #1a82f7, #2F2727);
+	height: 600px;
+}
+
+.centered-form {
+	margin-top: 60px;
+}
+
+.centered-form .panel {
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+
+label.label-floatlabel {
+	font-weight: bold;
+	color: #46b8da;
+	font-size: 11px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="row">
+
+    <div class="col-sm-4">
+   
+    </div>
+    <div class="col-sm-6">
+    <img src="/stylesheets/img/st.gif" alt="Stack" style="width:400px;height:120px;" Stack Overflow Data Analysis>
+    
+    </div>
+    <div class="col-sm-2">
+    
+    </div>
+
+</div>
+
+
+<br><br><br><br>
+ <div class="row">
+    
+  <center>  <div class="col-sm-7">
+    
+    <table class="" style="border:3px solid white; float:right; color: white">
+ 
+<tr style="background-color:#2c3e50; border: 3px solid white;">
+
+<th style="border: 3px solid white; padding:4px 10px 4px 10px;">TAGS</th>
+<th style="border: 3px solid white; padding:4px 10px 4px 10px;">RELATED POSTS</th>
+
+
+<tr>
+<% for(var i=2 in data) 
+	            {                     
+            %><tr>
+            	<td style="background-color:#2c3e50; border: 3px solid white;"><a href="javascript:void(0);" onclick="openUri('<%= data[i].tags %>');"><p><%= data[i].tags %></p></td>
+            		<td style="background-color:#2c3e50; border: 3px solid white;"><p><%= data[i].totalquery %></p></td>
+           		   
+            		  </tr>     
+           <% 
+	            }  
+	       %>
+</tr>
+</table>
+    
+    
+    </div></center>
+    
+    <div class="col-sm-5"></div>
+    </div>
+    
+	
+</body>
+<script type="text/javascript"
+		src="http://www.clubdesign.at/floatlabels.js"></script>
+
+	<div class="container">
+		
+	</div>
+	<script type="text/javascript">
+$(function() {
+  $('input').floatlabel({labelEndTop:0});
+});
+function openUri(tag)
+{
+	var uri="showdata?tag="+encodeURIComponent(tag);
+
+	window.location.href=uri;
+	}
+</script>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script type="text/javascript">
+var rank=[];
+
+var count=[];
+var tag=[];
+
+
+
+
+ <% for (var d=0;d<data.length;d++){%>
+ count.push(<%= data[d].count %>);
+ rank.push("<%= data[d].rankpred1 %>")
+ tag="<%= data[d].tag %>"
+/*  tag.push("C#");
+ tag.push("C#");
+ tag.push("C#");
+ tag.push("C#");
+ tag.push("C#");
+ tag.push("C#");
+ tag.push("C#");
+ tag.push("C#");
+ tag.push("C#");
+ tag.push("C#"); */
+
+
+ <%}%>
+
+	$(function () {
+	    $('#container1').highcharts({
+	        chart: {
+	            type: 'column'
+	        },
+	        title: {
+	            text: 'Question Ranking Count'
+	        },
+	        
+	        xAxis: {
+	            categories: rank,
+	            crosshair: true
+	        },
+	        yAxis: {
+	            min: 0,
+	            tickInterval: 10,
+	            title: {
+	                text: 'Values'
+	            }
+	        },
+	        tooltip: {
+	            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+	            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+	                '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+	            footerFormat: '</table>',
+	            shared: true,
+	            useHTML: true
+	        },
+	        plotOptions: {
+	            column: {
+	                pointPadding: 0.2,
+	                borderWidth: 0
+	            }
+	        },
+	        series: [{
+	            name: tag,
+	            data: count
+
+	        }]
+	    });
+	});
+	
+
+
+
+
+</script>
+</head>
+<body id="page-top" class="index" style="background:#18bc9c;">
+
+<div class="row">
+
+    <div class="col-sm-2">
+    <img src="/stylesheets/img/st.gif" alt="Stack" style="width:400px;height:120px;" Stack Overflow Data Analysis>
+    &nbsp;
+    </div>
+ </div>
+ 
+     <div class="row">
+     <div class="col-sm-12">
+     			<nav class="navbar navbar-light bg-faded" style="background-color: #e3f2fd;  width:1320px;"">
+  <a class="navbar-brand" href="/">Home</a>
+  <ul class="nav navbar-nav">
+  <li class="nav-item active" style="width:200px;">
+      <a class="nav-link" href="javascript:openURL()">Data Mining Algorithms <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item" style="width:200px;">
+      <a class="nav-link" href="/one">Question Prediction <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item" style="top: 15px; width:200px;">
+     <form id="abc" method="post" action="apriorirelation">
+      <a class="nav-link"  onclick="document.getElementById('abc').submit();">Topic Recommendation
+      </a>
+      </form>
+    </li>
+    
+    <li class="nav-item" style="top: 15px; width:200px;">
+    <form id="mostfreqpost"  method="post" action="top10">
+      <a class="nav-link" onclick="document.getElementById('mostfreqpost').submit();">Most Frequent Posts</a>
+    </li>
+    </form>
+    <li class="nav-item" style="width:300px;">
+      <a class="nav-link" href="/Sumclassification">
+Post Frequency</a>
+    </li>
+   <li style="top: 8px;">
+     <form class="form-inline pull-xs-right" action="/">
+    
+    <button class="btn btn-default"  style=" width:100px;background-color:#C0C0C0;" type="submit">Back</button>
+  </form>
+    </li>
+  </ul>
+ 
+</nav>
+     </div>
+	
+</div>
+
+<div  style="color:white;margin-left:128px;"><H3>Graphical Information</H3></div>
+<div id="container1" style="height: 300px"></div>
+
+</body>
+</html>
